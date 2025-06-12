@@ -1,6 +1,6 @@
 services:
   edu_doc_compare:
-    build: .                       # сборка образа из текущего Dockerfile
+    build: .
     image: edu_doc_compare:latest
     container_name: edu_doc_compare
     environment:
@@ -8,9 +8,7 @@ services:
     ports:
       - "8080:8000"
     volumes:
-      - ./StudyPlans:/app/StudyPlans       # папка с PDF на хосте ↔ внутри контейнера
-    # 1) Указываем, что Docker шлёт SIGTERM при остановке
+      - ./StudyPlans:/app/StudyPlans
     stop_signal: SIGTERM
 
-    # 2) Дадим uvicorn 30 секунд, чтобы он успел вызвать on_shutdown и удалить базу
     stop_grace_period: 30s
