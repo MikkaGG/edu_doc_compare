@@ -1,0 +1,14 @@
+services:
+  edu_doc_compare:
+    build: .
+    image: edu_doc_compare:latest
+    container_name: edu_doc_compare
+    environment:
+      DOCS_DIR: /app/StudyPlans
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./StudyPlans:/app/StudyPlans
+    stop_signal: SIGTERM
+
+    stop_grace_period: 30s
