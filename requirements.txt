@@ -1,0 +1,13 @@
+uvicorn
+fastapi
+langchain
+langchain-community
+pytesseract
+pypdf
+pdf2image
+langchain-huggingface
+langchain-chroma
+Pillow
+sentence_transformers
+numpy
+jinja2
