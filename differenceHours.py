@@ -5,7 +5,6 @@ import os
 import logging
 from subject_utils import extract_subject_name
 
-# Настройка логирования
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
