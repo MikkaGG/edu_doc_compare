@@ -17,11 +17,9 @@ templates = Jinja2Templates(directory="templates")
 async def upload_pdf(request: Request, file: UploadFile = File(...)):
     try:
         temp_path = f"temp_{file.filename}"
-        # Сохраняем загруженный файл во временное хранилище
         with open(temp_path, "wb") as f:
             f.write(await file.read())
         
-        # Вызываем функцию обработки из choosePlan.py
         best_plan_filename, extracted_text, best_plan_extracted = get_best_study_plan(temp_path, file.filename)
     
         comparsion_output = get_difference_hours(best_plan_extracted, extracted_text)
