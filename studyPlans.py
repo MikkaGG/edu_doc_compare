@@ -6,7 +6,6 @@ import re
 import logging
 from subject_utils import extract_subject_name
 
-# Настройка логирования
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -20,8 +19,7 @@ def save_to_chromadb(text, metadata, chroma_path="./chromadb_store"):
     embeddings = HuggingFaceEmbeddings(model_name="deepvk/USER-bge-m3")
     db = Chroma(embedding_function=embeddings, persist_directory=chroma_path)
     db.add_texts([text4search], metadatas=[metadata])
-    
-# Загрузка плана в .pdf
+
 
 def process_pdf(file_path):
     loader = PyPDFLoader(file_path)
@@ -35,7 +33,6 @@ def process_pdf(file_path):
 
     return " ".join(full_text)
 
-# Обработка учебного плана
 
 def clean_subject(subject):
     if "КСР" in subject:
@@ -77,7 +74,6 @@ def extract_subjects(raw_text):
             subjects.append(f"{subject_clean} - {hours} часов")
     return "\n".join(subjects)
 
-# Загрузка файлов и запуск функции
 
 def save_study_plans():
     logger.info("Программа начала работу")
