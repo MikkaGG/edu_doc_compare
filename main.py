@@ -7,7 +7,6 @@ from fastapi.responses import HTMLResponse
 import os
 import shutil
 
-# Добавить статусы кода
 
 templates = Jinja2Templates(directory="templates")
 
@@ -26,7 +25,6 @@ app = FastAPI(lifespan=lifespan)
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-# Подключаем роутер с эндпоинтами для OCR
 app.include_router(routes_ocr.router)
 
 if __name__ == "__main__":
