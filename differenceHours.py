@@ -53,10 +53,10 @@ def get_difference_hours(best_plan_extracted, extracted_text):
         if hours1 is not None and hours2 is not None:
             hours_diff = abs(hours1 - hours2)
 
-        logger.info(f"Предмет из учебной карточки: {names_file1[idx]}")
+        logger.info(f"Предмет из справки об обучении: {names_file1[idx]}")
         logger.info(f"Предмет из учебного плана: {names_file2[best_idx]}, Схожесть: {best_score:.2f}")
         logger.info(f"Разница учебных часов: {hours_diff}")
-        output_lines.append(f"Предмет из учебной карточки: {names_file1[idx]}")
+        output_lines.append(f"Предмет из справки об обучении: {names_file1[idx]}")
         output_lines.append(f"Предмет из учебного плана: {names_file2[best_idx]}, Схожесть: {best_score:.2f}")
         output_lines.append(f"Разница учебных часов: {hours_diff}")
         
