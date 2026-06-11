@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu-doc-compare
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edu-doc-compare
+  template:
+    metadata:
+      labels:
+        app: edu-doc-compare
+    spec:
+      containers:
+      - name: edu-doc-compare
+        image: edu_doc_compare:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        env:
+        - name: HF_TOKEN
+          value: "your_hugging_face_token_here"
+        volumeMounts:
+        - name: study-plans-storage
+          mountPath: /app/StudyPlans
+        - name: chromadb-storage
+          mountPath: /app/chromadb_store
+      volumes:
+      - name: study-plans-storage
+        hostPath:
+          path: /home/egor/Рабочий\ стол/my_project/StudyPlans
+      - name: chromadb-storage
+        hostPath:
+          path: /home/egor/Рабочий\ стол/my_project/chromadb_store
